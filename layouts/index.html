@@ -24,6 +24,22 @@
                     {{ if isset .Site.Params "social" }}
                         {{ partial "social.html" . }}
                     {{ end }}
+
+                    {{ range where .Site.RegularPages "Section" "in" .Site.MainSections }}
+                    <a href="{{ .Permalink }}">
+                        <!-- [html-validate-disable-next prefer-native-element] -->
+                        <div class="postListItem" role="listitem">
+                            <div class="postHeader">
+                                <span class="postTitle">{{ .Title }}</span>
+                                {{ $formattedDate := .Date.Format "2006-01-02" }}
+                                <time class="postDate" datetime="{{ $formattedDate }}">{{ .Date | time.Format ":date_long" }}</time>
+                            </div>
+                            <div class="postExcerpt">
+                                <p>{{ .Summary }}</p>
+                            </div>
+                        </div>
+                    </a>
+                    {{ end }}
                 </div>
             </main>
         </div>
