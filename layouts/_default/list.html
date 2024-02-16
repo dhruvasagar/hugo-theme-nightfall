@@ -16,8 +16,7 @@
     {{ end }}
 
     <div>
-        {{ range .Pages }}
-
+        {{ range (.Paginate .Pages 5).Pages }}
         <a href="{{ .Permalink }}">
             <!-- [html-validate-disable-next prefer-native-element] -->
             <div class="postListItem" role="listitem">
@@ -31,9 +30,9 @@
                 </div>
             </div>
         </a>
-
-
         {{end}}
+
+        {{ template "_internal/pagination.html" . }}
     </div>
 </div>
 

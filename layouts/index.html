@@ -25,7 +25,7 @@
                         {{ partial "social.html" . }}
                     {{ end }}
 
-                    {{ range where .Site.RegularPages "Section" "in" .Site.MainSections }}
+                    {{ range (.Paginate (where .Site.RegularPages "Section" "in" .Site.MainSections) 5).Pages }}
                     <a href="{{ .Permalink }}">
                         <!-- [html-validate-disable-next prefer-native-element] -->
                         <div class="postListItem" role="listitem">
@@ -40,6 +40,8 @@
                         </div>
                     </a>
                     {{ end }}
+
+                    {{ template "_internal/pagination.html" . }}
                 </div>
             </main>
         </div>
