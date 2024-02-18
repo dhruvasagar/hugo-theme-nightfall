@@ -4,6 +4,8 @@
 
 {{ hugo.Generator }}
 
+<meta name="keywords" content="{{ if .Params.Keywords }}{{ delimit .Params.Keywords ", " }}{{ end }}">
+
 <!-- Permalink & RSSlink -->
 <link rel="canonical" href="{{ .Permalink }}" >
 {{- with .OutputFormats.Get "RSS" }}
