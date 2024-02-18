@@ -19,7 +19,7 @@
         {{ range (.Paginate .Pages 5).Pages }}
         <a href="{{ .Permalink }}">
             <!-- [html-validate-disable-next prefer-native-element] -->
-            <div class="postListItem" role="listitem">
+            <div class="postListItem" role="listitem" aria-role="list">
                 <div class="postHeader">
                     <span class="postTitle">{{ .Title }}</span>
                     {{ $formattedDate := .Date.Format "2006-01-02" }}
