@@ -11,6 +11,15 @@
   <link href="{{ .Permalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" >
 {{- end -}}
 
+{{- if .Paginator -}}
+  {{- if .Paginator.HasPrev -}}
+    <link rel="prev" href="{{ .Paginator.Prev.URL | absURL }}" />
+  {{- end -}}
+  {{- if .Paginator.HasNext -}}
+    <link rel="prev" href="{{ .Paginator.Next.URL | absURL }}" />
+  {{- end -}}
+{{- end }}
+
 {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
 <link href="{{ $style.RelPermalink }}" rel="stylesheet">
 <link href="/styles.css" rel="stylesheet" />
